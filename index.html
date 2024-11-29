@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Caesar Cipher</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Caesar Cipher</h1>
+</header>
+
+<div class="container">
+    <h2>What is Caesar Cipher?</h2>
+    <p>The Caesar Cipher is one of the simplest and most well-known encryption techniques. It works by shifting the letters of the alphabet by a fixed number of places.</p>
+    
+    <h3>Encrypt or Decrypt Your Message</h3>
+    <form id="cipherForm">
+        <label for="text">Text:</label>
+        <input type="text" id="text" required>
+
+        <label for="shift">Shift (1-25):</label>
+        <input type="number" id="shift" min="1" max="25" required>
+
+        <label for="action">Choose Action:</label>
+        <select id="action">
+            <option value="encrypt">Encrypt</option>
+            <option value="decrypt">Decrypt</option>
+        </select>
+
+        <div class="button-container">
+          <button type="submit">Submit</button>
+          <button type="button" class="remove" onclick="clearInput()">Clear Input</button> <!-- Clear Input button -->
+        </div>
+    </form>
+
+    <h3>Results:</h3>
+    <div id="resultsContainer" class="entry-list"></div> <!-- Container for results -->
+</div>
+
+<script>
+    document.getElementById('cipherForm').onsubmit = function(event) {
+        event.preventDefault(); // Prevents the form from submitting normally
+
+        const text = document.getElementById('text').value.toUpperCase();
+        const shift = parseInt(document.getElementById('shift').value);
+        const action = document.getElementById('action').value;
+
+        let result = '';
+
+        for (let i = 0; i < text.length; i++) {
+            let char = text[i];
+            
+            if (char >= 'A' && char <= 'Z') {
+                let code;
+
+                if (action === 'encrypt') {
+                    code = ((char.charCodeAt(0) - 65 + shift) % 26) + 65; 
+                } else if (action === 'decrypt') {
+                    code = ((char.charCodeAt(0) - 65 - shift + 26) % 26) + 65; 
+                }
+
+                result += String.fromCharCode(code);
+            } else {
+                result += char; // Non-alphabetic characters remain unchanged
+            }
+        }
+
+        addResult(text, result); // Add result to the list
+    };
+    document.getElementById('cipherForm').onsubmit = function(event) {
+    event.preventDefault(); // Prevents the form from submitting normally
+
+    const text = document.getElementById('text').value.toUpperCase();
+    const shift = parseInt(document.getElementById('shift').value);
+    const action = document.getElementById('action').value;
+
+    let result = '';
+
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+        
+        if (char >= 'A' && char <= 'Z') {
+            let code;
+
+            if (action === 'encrypt') {
+                code = ((char.charCodeAt(0) - 65 + shift) % 26) + 65; 
+            } else if (action === 'decrypt') {
+                code = ((char.charCodeAt(0) - 65 - shift + 26) % 26) + 65; 
+            }
+
+            result += String.fromCharCode(code);
+        } else {
+            result += char; // Non-alphabetic characters remain unchanged
+        }
+    }
+    
+
+    addResult(result); // Only pass the result to be displayed
+};
+
+// Modify addResult function to only save and display results
+function addResult(encryptedText) {
+    const resultsContainer = document.getElementById('resultsContainer');
+    const entryDiv = document.createElement('div');
+    entryDiv.className = 'entry-item';
+
+    entryDiv.innerHTML = `
+        ${encryptedText} 
+        <button class='remove' onclick='removeEntry(this)'>Remove</button>
+    `;
+
+    resultsContainer.appendChild(entryDiv);
+    
+    // Clear input fields after adding result
+    clearInput();
+}
+
+function removeEntry(button) {
+    // Remove the specific entry associated with the clicked remove button
+    const entryItem = button.parentElement;
+    entryItem.remove();
+}
+
+function clearInput() {
+    // Clear all inputs
+    document.getElementById('text').value = '';
+    document.getElementById('shift').value = '';
+    document.getElementById('action').selectedIndex = 0; // Reset to first option
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://imgs.search.brave.com/41iJ6eAwx741P8YCE4aZwtY8lR9a4XuvQuFn-gxhUlA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTU1/NDM4OTg5L3Bob3Rv/L2NvbXB1dGVyLXNl/Y3VyaXR5LmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1ONGZa/akdoamZyQnI4OUJC/UmRsaEtXZEZPbndJ/N000S2h4cmR2QXFi/cHk0PQ'); /* Security-themed image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Fixed position */
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+header {
+    background-color: rgba(0, 123, 255, 0.9); /* Slightly more opaque blue */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 10px 10px 0 0; /* More rounded corners */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.95); /* Slightly more opaque white */
+    padding: 30px;
+    border-radius: 10px; /* More rounded corners */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+}
+h1 {
+    font-size: 30px; /* Increased font size for header */
+}
+h2 {
+    color: #007bff;
+}
+p {
+    line-height: 1.8; /* Increased line height for better readability */
+}
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+input[type="text"], input[type="number"], select {
+    width: calc(100% - 22px);
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 5px; /* Slightly more rounded corners */
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition for box shadow */
+}
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0,123,255,0.5); /* Add a glow effect on focus */
+}
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px; /* Slightly more rounded corners */
+    cursor: pointer;
+    margin-top: 15px;
+    width: calc(50% - 5px); /* Adjusted width to fit two buttons side by side */
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Smooth transitions */
+}
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+button.remove {
+    background-color: #dc3545; /* Red for remove button */
+}
+button.remove:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+.button-container {
+    display: flex; /* Use flexbox for aligning buttons side by side */
+    justify-content: space-between; /* Space between buttons */
+}
